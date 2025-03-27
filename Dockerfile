@@ -11,7 +11,8 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
   && apt-get clean \
   && groupmod -g "${GID}" node && usermod -u "${UID}" -g "${GID}" node \
-  && mkdir -p /node_modules && chown node:node -R /node_modules /app
+  && mkdir -p /node_modules && chown node:node -R /node_modules /app \
+  && chown -R "${UID}":"${GID}" /app/assets
 
 USER node
 
